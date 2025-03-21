@@ -1,8 +1,10 @@
 package com.devspringpablo.course.config;
 
+import com.devspringpablo.course.entities.Category;
 import com.devspringpablo.course.entities.Order;
 import com.devspringpablo.course.entities.User;
 import com.devspringpablo.course.entities.enums.OrderStatus;
+import com.devspringpablo.course.repositories.CategoryRepository;
 import com.devspringpablo.course.repositories.OrderRepository;
 import com.devspringpablo.course.repositories.UserRepository;
 import java.time.Instant;
@@ -22,8 +24,18 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+        
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
         User u1 = new User(null, "Pablo Rodrigues", "pablo@gmail.com", "19994932321", "123456");
         User u2 = new User(null, "Weslei Batista", "weslei@gmail.com", "19994234232", "123456");
 
