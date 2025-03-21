@@ -1,5 +1,6 @@
 package com.devspringpablo.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
 import jakarta.persistence.Entity;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements Serializable{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +23,11 @@ public class User implements Serializable{
     private String email;
     private String phone;
     private String password;
-    
+
+    @JsonIgnore
     @OneToMany(mappedBy = "client") // um para muitos
     private List<Order> orders = new ArrayList<>();
-    
+
     public User() {
     }
 
@@ -80,7 +82,7 @@ public class User implements Serializable{
     public List<Order> getOrders() {
         return orders;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -102,6 +104,5 @@ public class User implements Serializable{
         final User other = (User) obj;
         return Objects.equals(this.id, other.id);
     }
-    
-    
+
 }
