@@ -20,6 +20,35 @@ O projeto segue o modelo conceitual abaixo, com as entidades e seus relacionamen
 - Maven
 - Postgresql
 
+# Competências demonstradas
+- **Desenvolvimento Web**:
+  - Criação de APIs RESTful utilizando o Spring Boot.
+  - Implementação de operações CRUD com tratativas de exceções personalizadas.
+  - Integração com banco de dados utilizando JPA e Hibernate para mapeamento objeto-relacional (ORM).
+  
+- **Arquitetura e boas práticas**:
+  - Uso do padrão DTO para transferência de dados entre camadas.
+  - Aplicação de boas práticas como separação de responsabilidades (Services, Resources, Repositories).
+  - Configuração de perfis de aplicação com `application.properties` para diferentes ambientes (dev/prod).
+  
+- **Gerenciamento de erros**:
+  - Implementação de classes de manipulação de exceções para retorno de respostas padronizadas de erro.
+  - Tratativa de erros como `ResourceNotFoundException` e `DatabaseException`.
+
+- **Banco de Dados**:
+  - Configuração de banco de dados PostgreSQL em ambiente local.
+  - Criação e manipulação de entidades e relacionamentos no banco.
+  - Uso de queries personalizadas com o JPA.
+
+- **Versionamento de Código**:
+  - Controle de versão utilizando Git.
+  - Integração do projeto com GitHub para deploy e apresentação.
+
+- **Ferramentas e Frameworks**:
+  - Maven para gerenciamento de dependências e build do projeto.
+  - Postman para testes das APIs.
+  - IDE utilizada: NetBeans.
+    
 # Como executar o projeto
 
 ## Pré-requisitos
