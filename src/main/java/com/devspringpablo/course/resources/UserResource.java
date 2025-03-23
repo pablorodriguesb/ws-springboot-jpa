@@ -2,9 +2,12 @@ package com.devspringpablo.course.resources;
 
 import com.devspringpablo.course.entities.User;
 import com.devspringpablo.course.services.UserService;
+import com.devspringpablo.course.services.exceptions.DatabaseException;
+import com.devspringpablo.course.services.exceptions.ResourceNotFoundException;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,11 +47,19 @@ public class UserResource {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        try {
+            service.delete(id);  // Lança exceção se o usuário não for encontrado ou houver problema no banco de dados
+            return ResponseEntity.noContent().build();  // Retorna 204 No Content se a exclusão for bem-sucedida
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");  // Retorna 404 Not Found se o usuário não existir
+        } catch (DatabaseException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());  // Retorna 409 Conflict se houver violação de integridade
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error while deleting the user");  // Retorna 500 Internal Server Error em outros casos
+        }
     }
-    
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
         obj = service.update(id, obj);
