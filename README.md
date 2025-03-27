@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 
-Este projeto foi desenvolvido durante o módulo **Projeto Web com Spring Boot e JPA / Hibernate** do curso [Java COMPLETO Programação Orientada a Objetos + Projetos](https://www.udemy.com/course/java-curso-completo/) do professor **Nélio Alves**, disponível na plataforma Udemy.
+Este projeto foi desenvolvido durante o módulo **Projeto Web com Spring Boot e JPA / Hibernate**.
 
 A aplicação é um sistema de gerenciamento de usuários com serviços RESTful, incluindo operações de CRUD, tratativas de exceções, e conexão com banco de dados. Foi implementada utilizando as melhores práticas com **Spring Boot** e **JPA/Hibernate** para persistência de dados.
 
